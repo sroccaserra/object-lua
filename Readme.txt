@@ -9,7 +9,7 @@ This is an early release, please report bugs & feature requests to the project's
 
         * Class oriented
         * All classes derive from Object
-        * Single inheritance (with Mixins coming soon!)
+        * Single inheritance
         * All method calls are virtual, the class of the instance determines the bound method
         * Access to superclass method in overriden methods with a Java-like {{super.method(self)}} method
         * The use of super only grants access to methods, NOT to data members (prevents many evils)
