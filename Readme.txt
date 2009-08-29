@@ -15,6 +15,7 @@ This is an early release, please report bugs & feature requests to the project's
         * The use of super only grants access to methods, NOT to data members (prevents many evils)
         * Consistent use of {{:}}, always use {{:}} to call any method of any class or instance
         * Object model allows to redefine {{new()}} in any class (see tests)
+        * Use "has" to define members (inspired by Moose)
         * Hopefully only one way to do things, very predictible results
 
 Note: there is a {{Prototype.lua}} file in the package, which is completely independant, but if you need prototype-based oop have a look at it (it provides a {{super(self)}} function).
