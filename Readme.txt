@@ -11,7 +11,7 @@ This is an early release, please report bugs & feature requests to the project's
         * All classes derive from Object
         * Single inheritance (with Mixins coming soon!)
         * All method calls are virtual, the class of the instance determines the bound method
-        * Access to superclass method in overriden methods with a Java-like {{super(self)}} method
+        * Access to superclass method in overriden methods with a Java-like {{super.method(self)}} method
         * The use of super only grants access to methods, NOT to data members (prevents many evils)
         * Consistent use of {{:}}, always use {{:}} to call any method of any class or instance
         * Object model allows to redefine {{new()}} in any class (see tests)
