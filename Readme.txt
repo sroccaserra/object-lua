@@ -70,3 +70,4 @@ Thanks to Robert Rangel for finding a blocker bug fixed in version 0.0.3.
         * The project's [http://sroccaserra.uservoice.com/pages/object_lua UserVoice page] for bugs & feature requests.
         * The project's [http://code.google.com/p/objectlua/ Google code page]
         * ObjectOrientedProgramming
+
