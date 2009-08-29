@@ -1,0 +1,217 @@
+=== What's new in version 0.5.0 ===
+
+* To enable calling super.aFuntcion() in anotherFunction(), super is now a table. Call like this (see tests for more examples):
+    super.initialize(self)
+* Class has a new function "has", inspired by Moose. Exemple:
+    Game:has("_isReady", {is="rwb", default=true})
+
+=== What's new in version 0.4.12 ===
+
+You can use module() to define classes.
+Just start your class file with:
+
+    Object:subclass(...)
+    module(...)
+
+Note: beware of package.seeall, it would include _G in your class.
+See testLoadAClassFromFile(), and file SomeClass.lua for details.
+
+
+
+=== What's new in version 0.4.11 ===
+
+- Added a rockspec target to generate the rockspec from a template.
+
+
+
+=== What's new in version 0.4.9 ===
+
+- Added rockspeck for LuaRocks distribution
+
+
+
+=== What's new in version 0.4.8 ===
+
+- New make target to test the distribution archive.
+
+
+
+=== What's new in version 0.4.7 ===
+
+Moved source files to src/ and tests to test/
+
+
+
+=== What's new in version 0.4.6 ===
+
+1) Moved to Google Code, and changed the module name.
+
+Module name was 'Oop' for sometime, then 'xoop', but I always thought it was weird.
+
+Now, the module for the project is named 'objectlua', which conveys the same information about its intent, and has 'lua' in it.
+
+I considered 'objectual', but it was a bit too smart for me.
+
+Sorry for the inconvenience, I don't expect the module name to change in the next few years!
+
+
+2) The makefile now has a 'test' target, that is always executed before the 'dist' target, stoping the make process if a test fails.
+I like it.
+
+
+
+=== What's new in version 0.4.4 ===
+
+
+Version 0.4.4 introduces the concept of named classes.
+
+
+
+=== What's new in version 0.4.3 ===
+
+Added module Oop. Now requiring 'Oop' is the preferred way to use this package.
+
+Just require 'Oop', and use Oop.Object, Oop.Class...
+
+You can also create aliases at your convenience (Object = Oop.Object).
+
+See tests for examples.
+
+
+
+=== What's new in version 0.4.2 ===
+
+I removed Traits for a while, as I am not satisfied with the current implementation. They will be back in version 0.5.0, which will be out soon I hope.
+
+I split the implementation in several files, using Lua modules to ease Traits implementation.
+
+So now, to use {{Object}} and {{Class}} in your code, do {{Object = require 'Oop.Object'}} and {{Class = require 'Oop.Class'}}.
+
+
+
+=== What's new in version 0.4.1 ===
+
+Object.lua hasn't changed, but this release comes with Traits.lua,
+allowing some form of controlled multiple inheritance.
+
+A Trait is essentially a parameterized set of methods, not unlike like Ruby's mixins.
+Unlike mixins however, Traits method conflicts must be resolved using aliases.
+
+See TestTraits.lua for some usage examples.
+
+See http://www.iam.unibe.ch/~scg/Research/Traits/ for more details about Traits.
+
+
+
+=== What's new in version 0.4.0 ===
+
+Warning: please now use super(self) instead of self:super().
+
+* New super() implementation using setfenv instead of a closure
+* Replaced self:super(...) by super(self, ...) due to tail call problem with getfenv()
+
+
+
+=== What's new in version 0.3.4 ===
+
+* Small optim in method call
+* Methods can now have multiple return values
+
+
+
+=== What's new in version 0.3.3 ===
+
+I added the possibility to use a new super() implementation based on fenv.
+The goal of this is to benchmark the super() implementations.
+
+
+
+=== What's new in version 0.3.2 ===
+
+* super method is now exception safe.
+  Fixed a small bug when self:super() throws an exception. See testExceptionInSuper().
+
+
+=== What's new in version 0.3.1 ===
+
+Now, self:super() looks for the super method at call time.
+This allows defining method and super method in any order.
+And classes can now change dynamically without breaking super().
+
+
+
+=== What's new in version 0.3.0 ===
+
+* Moved methods basicNew(), new(), subclass(), and inheritsFrom(), to Class
+
+* The method object:class() is replaced by the instance variable object.class.
+* The method object:superclass() is replaced by the instance variable object.superclass.
+
+* New object model. Every class is an instance of its metaclass.
+  Object's metaclass is Object.class, Class's metaclass is Class.class...
+  The class of all metaclass is Class, ie. Object.class.class == Class (circular reference)
+
+* New way to define and call class methods
+* Adding a method to a class makes it available to all its instances (like before), but NOT to itself.
+  Ie. to add a static method to Toto, add it to Toto.class since Toto is an instance of Toto.class
+  (see tests).
+
+
+
+=== What's new in version 0.2.1 ===
+
+* __newindex__: Test to avoid type comparison in non overriden methods
+
+
+
+=== What's new in version 0.2.0 ===
+
+* Changed access to super. Now, self:super() is only available in overriden methods,
+  and behaves like Java's super(). See tests.
+
+
+
+=== What's new in version 0.1.2 ===
+
+* A few internal renames for clarity
+
+
+
+=== What's new in version 0.1.1 ===
+
+* Removed instance & class metatables, plugged vtables & parents directly.
+
+
+
+=== What's new in version 0.1.0 ===
+
+* /!\ Please now use super(Class, instance), like in Python 2.X /!\
+* Made unused arguments anonymous in super()
+* Added Object:basicNew() and Object:clone()
+* Added Class table
+* Added Object:inheritsFrom(class)
+* Made object metatables private
+
+
+
+=== What's new in version 0.0.5 ===
+
+** text lost **
+
+
+
+=== What's new in version 0.0.4 ===
+
+* Added function Object:isKindOf(class).
+
+
+
+=== What's new in version 0.0.3 ===
+
+* First working version
+
+
+
+=== What's new in version 0.0.1 ===
+
+* This release has a critical bug in it, please use version 0.0.3 or later
