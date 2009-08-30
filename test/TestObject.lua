@@ -13,7 +13,6 @@ function tearDown()
     Class.reset()
 end
 
-
 ----
 --  Inheritance & Initialization
 function testInheritanceAndInitialization()
