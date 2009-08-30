@@ -35,16 +35,27 @@ function testInheritanceAndInitialization()
 end
 
 ----
+--  Testing requiring a class file
+function testLoadAClassFromFile()
+    _G.require 'SomeClass' -- See file 'SomeClass.lua' in test directory
+
+    local someObject = _G.SomeClass:new()
+    _G.assertEquals(someObject:className(), 'SomeClass')
+    _G.assert(someObject:itWorks())
+    _G.assert(someObject:isWorking())
+end
+
+----
 --  Testing subclassing
 function testSubclassing()
-   local Toto = Object:subclass()
+   local Person = Object:subclass()
 
-   function Toto:initialize(name)
+   function Person:initialize(name)
       self.name = name
    end
 
-   local john = Toto:new('John')
-   local bob = Toto:new('Bob')
+   local john = Person:new('John')
+   local bob = Person:new('Bob')
 
    _G.assertEquals(john.name, 'John')
    _G.assertEquals(bob.name, 'Bob')
@@ -53,41 +64,41 @@ end
 ----
 --  Calling super
 function testSuper()
-    local Toto = Object:subclass()
-    function Toto:initialize(name)
+    local Person = Object:subclass()
+    function Person:initialize(name)
         self.name = name
     end
 
-    local Tata = Toto:subclass()
-    function Tata:initialize(name)
+    local Employee = Person:subclass()
+    function Employee:initialize(name)
        super.initialize(self, name)
     end
 
-    local tata = Tata:new('Bob')
-    _G.assertEquals(tata.name, 'Bob')
+    local employee = Employee:new('Bob')
+    _G.assertEquals(employee.name, 'Bob')
 end
 
 ----
 --  Calling super through two levels of inheritance.
 --  This one can cause a stackoverflow with a too simple super() implementation.
 function testSuperThroughTwoLevels()
-    local Toto = Object:subclass()
-    function Toto:initialize(name)
+    local Person = Object:subclass()
+    function Person:initialize(name)
         self.name = name
     end
 
-    local Tata = Toto:subclass()
-    function Tata:initialize(name)
+    local Employee = Person:subclass()
+    function Employee:initialize(name)
         super.initialize(self, name)
     end
 
-    local Titi = Tata:subclass()
-    function Titi:initialize(name)
+    local Programmer = Employee:subclass()
+    function Programmer:initialize(name)
         super.initialize(self, name)
     end
 
-    local titi = Titi:new('Paul')
-    _G.assertEquals(titi.name, 'Paul')
+    local programmer = Programmer:new('Paul')
+    _G.assertEquals(programmer.name, 'Paul')
 end
 
 ----
@@ -170,24 +181,24 @@ end
 --  Calling initialize with two arguments through super
 --  Passes since version 0.0.3
 function testInitializeWithTwoArguments()
-    local Toto = Object:subclass()
+    local Person = Object:subclass()
 
-    function Toto:initialize(name, color)
+    function Person:initialize(name, color)
         self.name = name
         self.color = color
     end
 
-    local toto = Toto:new('Bob', 'red')
-    _G.assertEquals(toto.name, 'Bob')
-    _G.assertEquals(toto.color, 'red')
+    local person = Person:new('Bob', 'red')
+    _G.assertEquals(person.name, 'Bob')
+    _G.assertEquals(person.color, 'red')
 
-    local Tata = Toto:subclass()
-    function Tata:initialize(name, color)
+    local Employee = Person:subclass()
+    function Employee:initialize(name, color)
         super.initialize(self, name, color)
     end
-    local tata = Tata:new('John', 'blue')
-    _G.assertEquals(tata.name, 'John')
-    _G.assertEquals(tata.color, 'blue')
+    local employee = Employee:new('John', 'blue')
+    _G.assertEquals(employee.name, 'John')
+    _G.assertEquals(employee.color, 'blue')
 end
 
 ----
@@ -291,9 +302,9 @@ end
 ----
 --  Private metatables (set)
 function testSetMetatableFails()
-    local Titi = Object:subclass()
-    local titi = Titi:new()
-    _G.assertError(_G.setmetatable, titi, {})
+    local Person = Object:subclass()
+    local person = Person:new()
+    _G.assertError(_G.setmetatable, person, {})
 end
 
 ----
@@ -367,21 +378,21 @@ function testIsMeta()
    _G.assert(not Class:isMeta())
    _G.assert(Object.class:isMeta())
    _G.assert(Class.class:isMeta())
-   local Toto = Object:subclass()
-   _G.assert(not Toto:isMeta())
-   _G.assert(Toto.class:isMeta())
+   local Person = Object:subclass()
+   _G.assert(not Person:isMeta())
+   _G.assert(Person.class:isMeta())
 end
 
 ----
 --  Multiple return values
 function testMultipleReturnValues()
-    local Toto = Object:subclass()
-    function Toto:returnTwoValues()
+    local Person = Object:subclass()
+    function Person:returnTwoValues()
         return 1, 2
     end
 
-    local toto = Toto:new()
-    a, b = toto:returnTwoValues()
+    local person = Person:new()
+    a, b = person:returnTwoValues()
     _G.assertEquals(a, 1)
     _G.assertEquals(b, 2)
 end
@@ -389,9 +400,9 @@ end
 ----
 --
 function testCallingNonExistingMethodFails()
-    local Titi = Object:subclass()
-    local titi = Titi:new()
-    _G.assertError(titi.aNonExistingMethod, titi)
+    local Person = Object:subclass()
+    local person = Person:new()
+    _G.assertError(person.aNonExistingMethod, person)
 end
 
 ----
@@ -470,17 +481,6 @@ function testAllClasses()
     _G.assertEquals(classes['NamedClass Metaclass']:name(), 'NamedClass Metaclass')
 end
 
-----
---  Testing requiring a class file
-function testLoadAClassFromFile()
-    local SomeClass = _G.require 'SomeClass'
-
-    local someObject = SomeClass:new()
-    _G.assertEquals(someObject:className(), 'SomeClass')
-    _G.assert(someObject:itWorks())
-    _G.assert(someObject:isWorking())
-end
-
 function testClassShadowedFails1()
     Object:subclass('SomeClass')
     _G.assertError(_G.require, 'SomeClass')
@@ -495,9 +495,9 @@ function testClassShadowedFails2()
 end
 
 function testGlobalName()
-    local Toto = Object:subclass('tata.Toto')
-    _G.assert(_G.tata)
-    _G.assert(_G.tata.Toto)
+    local Person = Object:subclass('people.Person')
+    _G.assert(_G.people)
+    _G.assert(_G.people.Person)
 end
 
 

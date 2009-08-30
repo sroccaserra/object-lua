@@ -1,17 +1,17 @@
 A class-oriented OOP module for Lua
 
-This is an implementation of a class-oriented Lua module, coded entirely in Lua. The object model allows you to override 'new()' (see tests), so you can write classes that behave the way you want. While still in design stage, the interface is getting quite stable and I'm in the process of adding Mixin.
+This is an implementation of a class-oriented Lua module, coded entirely in Lua. The object model allows you to override 'new()' (see tests), so you can write classes that behave the way you want. While still in design stage, the interface is getting quite stable and I will add a multiple inheritance mechanism if a user asks me to, or if I need it miself.
 
-This is an early release, please report bugs & feature requests to the project's [http://sroccaserra.uservoice.com/pages/object_lua UserVoice page].
+This is a beta release, please report bugs & feature requests to the project's [http://sroccaserra.uservoice.com/pages/object_lua UserVoice page].
 
 
 === Features ===
 
         * Class oriented
         * All classes derive from Object
-        * Single inheritance
+        * Single inheritance (will add multiple if someone needs it)
         * All method calls are virtual, the class of the instance determines the bound method
-        * Access to superclass method in overriden methods with a Java-like {{super.method(self)}} method
+        * Access to superclass method in overriden methods with a Java-like {{super.method(self)}}
         * The use of super only grants access to methods, NOT to data members (prevents many evils)
         * Consistent use of {{:}}, always use {{:}} to call any method of any class or instance
         * Object model allows to redefine {{new()}} in any class (see tests)
