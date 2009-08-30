@@ -1,5 +1,5 @@
 --
---  Tested with Lua 5.1.3 & Lua 5.1.4
+--  Tested with Lua 5.1.4
 --
 require 'objectlua.init'
 
