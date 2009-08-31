@@ -4,6 +4,7 @@ module(...)
 
 _G.objectlua = {}
 
+
 ---
 -- Helper methods
 
@@ -31,6 +32,7 @@ local function redirectAssignmentToPrototype(t, k, v)
     _G.assert(nil ~= prototype)
     _G.rawset(prototype, k, v)
 end
+
 
 ---
 -- Class methods used in bootstraping
