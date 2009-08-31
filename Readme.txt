@@ -23,7 +23,7 @@ Note: there is a {{Prototype.lua}} file in the package, which is completely inde
 
 === Warnings ===
 
-        * This is an early release.  Changes can be made in the future
+        * This is a beta release.  Changes can be made in the future
         * No optimization.  This is still in the design stage
 
 
