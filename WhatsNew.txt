@@ -1,6 +1,9 @@
 === What's new in version 0.5.0 ===
 
-* To enable calling super.aFuntcion() in anotherFunction(), super is now a table. Call like this (see tests for more examples):
+* Now load the library using :
+    require 'objectlua.init' -- or require 'objectlua' if you have '?/init.lua' in your package.path
+  It creates the package objectlua, containing the Object and Class classes. Now create your own classes by subclassing Object (see tests).
+* To enable calling super.aFunction() in anotherFunction(), super is now a table. Call like this (see tests for more examples):
     super.initialize(self)
 * Class has a new function "has", inspired by Moose. Exemple:
     Game:has("_isReady", {is="rwb", default=true})
