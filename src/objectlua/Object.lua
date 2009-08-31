@@ -27,4 +27,3 @@ end
 function subclassResponsibility(self)
     _G.error("Error: subclass responsibility.")
 end
-
