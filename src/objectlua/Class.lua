@@ -134,9 +134,9 @@ function unregister(self)
 end
 
 
--- Note: calling reset() will unregister (and allow you to reload or redefine)
--- all user defined classes, but not the Object and Class classes (and
--- corresponding metaclasses).
+-- Note: calling reset() will unregister (and allow you to reload or
+-- redefine) all user defined classes, but not the Object and Class
+-- classes (and corresponding metaclasses).
 function reset()
     for name, class in _G.pairs(classes) do
         if class:package() ~= _G.objectlua then
