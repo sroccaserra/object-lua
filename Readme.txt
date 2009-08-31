@@ -65,6 +65,7 @@ and {{Object}} with {{initialize()}}, {{isKindOf()}}, {{clone()}}...
 Thanks to Ludovic Perrine for making things clearer with enlightening discussions.
 Thanks to Robert Rangel for finding a blocker bug fixed in version 0.0.3.
 
+
 === See Also ===
 
         * The project's [http://sroccaserra.uservoice.com/pages/object_lua UserVoice page] for bugs & feature requests.
