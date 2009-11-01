@@ -1,34 +1,23 @@
-# PROJECT  := objectlua
-# VERSION  := $(shell sed -n "/What's new in version/s/[^0-9.]//gp;q" 'WhatsNew.txt')
+PROJECT = 'objectlua'
+VERSION = sh "sed -n \"/What's new in version/s/[^0-9.]//gp;q\" 'WhatsNew.txt'"
 # SUMMARY  := $(shell sed -n '1,1 p' 'Readme.txt')
 # DETAILED := $(shell sed -n '3 p' 'Readme.txt')
 # MD5      = $(shell md5sum $(DISTFILE) | cut -d\  -f1)
 
-# DISTDIR  = $(PROJECT)-$(VERSION)
-# DISTFILE = $(DISTDIR).tar.gz
+DISTDIR  = "#{PROJECT}-#{VERSION}"
+DISTFILE = "#{DISTDIR}.tar.gz"
 # FILES    = $(shell find ./* -maxdepth 0 '(' -path '*.svn*' -o -path './$(PROJECT)*' ')' -prune -o -print)
-
-# all: dist distcheck rockspec
 
 task :default => :test
 
 task :all => [:dist, :distcheck, :rockspec]
 
-# test: test-clean=
-# 	cp -r src/$(PROJECT) test/$(PROJECT)
-# 	cd test && lua TestObjectLua.lua
-# 	make test-clean
-
-PROJECT = 'objectlua'
-
-task :test => [:test_clean] do
-    sh "cd test && lua -e 'package.path = package.path..';'..'../src' TestObjectLua.lua"
+task :test do
+    LUA_PATH_COMMAND = "package.path = package.path .. ';' .. '../src/?.lua'"
+    sh "cd test && lua -e \"#{LUA_PATH_COMMAND}\" TestObjectLua.lua"
 end
 
-# test-clean:
-# 	rm -rf test/$(PROJECT)
-
-# dist: dist-clean test
+task :dist => [:dist_clean, :test] do
 # 	@echo "Distribution temp directory: $(DISTDIR)"
 # 	@echo "Distribution file: $(DISTFILE)"
 # 	@echo "Version: $(VERSION)"
@@ -36,18 +25,22 @@ end
 # 	cp -r $(FILES) $(DISTDIR)
 # 	tar --exclude '.svn*' --exclude '*Trait*' --exclude '*Mixin*' -cvzf $(DISTFILE) $(DISTDIR)/*
 # 	rm -rf $(DISTDIR)
+end
 
-# dist-clean:
-# 	rm -rf $(PROJECT)-*.tar.gz
+task :dist_clean do
+    sh "rm -rf #{PROJECT}-*.tar.gz"
+end
 
-# distcheck: $(DISTFILE) distcheck-clean
+task :distcheck => [DISTFILE, :distcheck_clean] do
 # 	mkdir -p tmp
 # 	cd tmp && tar -xzf ../$(DISTFILE)
 # 	cd tmp/$(DISTDIR) && make test
 # 	make distcheck-clean
+end
 
-# distcheck-clean:
-# 	rm -rf tmp
+task :distcheck_clean do
+    sh "rm -rf tmp"
+end
 
 # .PHONY: rockspec
 # rockspec:
@@ -58,10 +51,12 @@ end
 # 	  template.rockspec > $(PROJECT)-$(VERSION)-1.rockspec
 # 	cat $(PROJECT)-$(VERSION)-1.rockspec
 
-# rockspec-clean:
-# 	rm -f objectlua-*.rockspec
+task :rockspec_clean do
+    sh "rm -f objectlua-*.rockspec"
+end
 
-# clean: test-clean dist-clean distcheck-clean rockspec-clean
+task :clean => [:test_clean, :dist_clean, :distcheck_clean, :rockspec_clean]
 
-# tag:
+task :tag do
 # 	svn copy . https://objectlua.googlecode.com/svn/tags/$(VERSION) -m '$(VERSION) version tag'
+end
