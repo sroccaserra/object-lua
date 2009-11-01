@@ -1,3 +1,6 @@
+# Don't use me, I'm not maintained!
+# Please use Rakefile instead.
+
 PROJECT  := objectlua
 VERSION  := $(shell sed -n "/What's new in version/s/[^0-9.]//gp;q" 'WhatsNew.txt')
 SUMMARY  := $(shell sed -n '1,1 p' 'Readme.txt')
