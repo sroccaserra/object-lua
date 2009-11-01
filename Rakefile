@@ -15,6 +15,7 @@ Archive = "pkg/#{Package}.tar.gz"
 Files = FileList.new('./**/*') do |files|
     files.exclude "#{Project}*"
     files.exclude './pkg'
+    files.exclude './old'
 end
 
 Rake::PackageTask.new(Project, Project_version) do |p|
