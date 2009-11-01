@@ -2,32 +2,32 @@ require 'rake/packagetask'
 require 'digest/md5'
 require 'erb'
 
-PROJECT = 'objectlua'
-PROJECT_VERSION = File.new('WhatsNew.txt').gets[/[0-9.]+/]
+Project = 'objectlua'
+Project_version = File.new('WhatsNew.txt').gets[/[0-9.]+/]
 readme = File.new('Readme.txt')
-SUMMARY  = readme.gets
+Summary  = readme.gets
 readme.gets ''
-DETAILED = $_.chomp
+Detailed = $_.chomp
 
-PACKAGE = "#{PROJECT}-#{PROJECT_VERSION}"
-ARCHIVE = "pkg/#{PACKAGE}.tar.gz"
+Package = "#{Project}-#{Project_version}"
+Archive = "pkg/#{Package}.tar.gz"
 
-FILES = FileList.new('./**/*') do |files|
-    files.exclude "#{PROJECT}*"
+Files = FileList.new('./**/*') do |files|
+    files.exclude "#{Project}*"
     files.exclude './pkg'
 end
 
-Rake::PackageTask.new(PROJECT, PROJECT_VERSION) do |p|
+Rake::PackageTask.new(Project, Project_version) do |p|
     p.need_tar_gz = true
-    p.package_files = FILES
+    p.package_files = Files
 end
 
 task :default => :test
 task :all => [:package, :distcheck, :rockspec]
 
 task :test do
-    lua_path_command = "package.path = package.path .. ';' .. '../src/?.lua'"
-    sh "cd test && lua -e \"#{lua_path_command}\" TestObjectLua.lua"
+    Lua_path_command = "package.path = package.path .. ';' .. '../src/?.lua'"
+    sh "cd test && lua -e \"#{Lua_path_command}\" TestObjectLua.lua"
 end
 
 # task :distcheck_clean do
@@ -41,20 +41,20 @@ end
 # # 	make distcheck-clean
 # end
 
-task :rockspec => ARCHIVE do
-    $md5 = Digest::MD5.hexdigest(File.read ARCHIVE)
-    template = File.new('rockspec.erb').read
-    erb = ERB.new template
-    rockspec = erb.result
-    File.new("#{PACKAGE}-1.rockspec", 'w').write rockspec
+task :rockspec => Archive do
+    $Md5 = Digest::MD5.hexdigest(File.read Archive)
+    Template = File.new('rockspec.erb').read
+    erb = ERB.new Template
+    Rockspec = erb.result
+    File.new("#{Package}-1.rockspec", 'w').write Rockspec
 end
 
 task :rockspec_clean do
-    sh "rm -f #{PROJECT}-*.rockspec"
+    sh "rm -f #{Project}-*.rockspec"
 end
 
 task :clean => [:clobber_package, :rockspec_clean]
 
-task :tag do
-# 	svn copy . https://objectlua.googlecode.com/svn/tags/$(PROJECT_VERSION) -m '$(PROJECT_VERSION) version tag'
-end
+# task :tag do
+# # 	sh "svn copy . https://objectlua.googlecode.com/svn/tags/$(PROJECT_VERSION) -m '$(PROJECT_VERSION) version tag'"
+# end
