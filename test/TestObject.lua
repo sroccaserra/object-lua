@@ -569,3 +569,19 @@ function testHasInModule()
     local someObject = SomeClass:new()
     _G.assert(someObject:isWorking())
 end
+
+function xtestSuperCantBeChanged()
+    local Person = Object:subclass('Person')
+    function Person:sayHello()
+        return "Hello!"
+    end
+
+    local Employee = Person:subclass('Employee')
+    function Employee:sayHello()
+        super.x = 3 -- This could be nasty !
+    end
+
+    _G.assertError(function()
+                    Employee:new():sayHello()
+                end)
+end
