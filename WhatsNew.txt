@@ -1,3 +1,7 @@
+=== What's new in version 0.5.1 ===
+
+* todo
+
 === What's new in version 0.5.0 ===
 
 * Now load the library using :
