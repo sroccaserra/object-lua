@@ -38,7 +38,8 @@ task :rockspec => :package do
     # Gather data from files...
     Md5 = Digest::MD5.hexdigest File.read "pkg/#{Package_task.tar_gz_file}"
     readme = File.new 'Readme.txt'
-    Summary  = readme.gets
+    readme.gets
+    Summary  = $_.chomp
     readme.gets ''
     Detailed = $_.chomp
 
@@ -52,6 +53,7 @@ task :rockspec_clean do
     rm_f "pkg/#{Project}-*.rockspec"
 end
 
-# task :tag do
-# # 	sh "svn copy . https://objectlua.googlecode.com/svn/tags/$(PROJECT_VERSION) -m '$(PROJECT_VERSION) version tag'"
-# end
+task :tag do
+    Message = "version #{Project_version}"
+    sh "hg tag -m '#{Message} tag' '#{Message}'"
+end
