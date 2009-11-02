@@ -10,13 +10,10 @@ FILES    = $(shell find ./* -maxdepth 0 '(' -path '*.svn*' -o -path './$(PROJECT
 
 all: dist distcheck rockspec
 
-test: test-clean
-	cp -r src/$(PROJECT) test/$(PROJECT)
-	cd test && lua TestObjectLua.lua
-	make test-clean
-
-test-clean:
-	rm -rf test/$(PROJECT)
+.PHONY: test
+test:
+	lua -e 'package.path = "./src/?.lua;./test/?.lua;"..package.path' \
+	    test/TestObjectLua.lua
 
 dist: dist-clean test
 	@echo "Distribution temp directory: $(DISTDIR)"
@@ -51,7 +48,7 @@ rockspec:
 rockspec-clean:
 	rm -f objectlua-*.rockspec
 
-clean: test-clean dist-clean distcheck-clean rockspec-clean
+clean: dist-clean distcheck-clean rockspec-clean
 
 tag:
 	svn copy . https://objectlua.googlecode.com/svn/tags/$(VERSION) -m '$(VERSION) version tag'
