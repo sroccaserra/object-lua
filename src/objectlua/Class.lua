@@ -1,3 +1,5 @@
+-- -*- compile-command: "rake" -*-
+
 require 'objectlua.bootstrap'
 
 local Object = objectlua.Object

@@ -1,6 +1,9 @@
+-- -*- compile-command: "rake" -*-
+
 --
 --  Tested with Lua 5.1.4
 --
+
 require 'objectlua.init'
 
 local Object = objectlua.Object

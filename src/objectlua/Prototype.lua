@@ -1,3 +1,4 @@
+-- -*- compile-command: "rake" -*-
 --
 -- Prototype-based Oop in Lua
 --

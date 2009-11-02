@@ -1,3 +1,5 @@
+-- -*- compile-command: "rake" -*-
+
 require 'luaunit'
 require 'objectlua.init'
 
