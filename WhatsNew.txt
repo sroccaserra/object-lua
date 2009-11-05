@@ -1,6 +1,6 @@
 === What's new in version 0.5.1 ===
 
-* todo
+* Moved from Make to Rake
 
 === What's new in version 0.5.0 ===
 
