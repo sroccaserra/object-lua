@@ -20,7 +20,7 @@ Package_task = Rake::PackageTask.new Project, Project_version do |p|
 end
 
 def test base_dir
-    lua_path_command = "package.path = '../src/?.lua;' .. package.path"
+    lua_path_command = "package.path = '../lib/?.lua;' .. package.path"
     cd "#{base_dir}/test" do
         sh "lua -e \"#{lua_path_command}\" TestObjectLua.lua"
     end
