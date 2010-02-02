@@ -29,7 +29,7 @@ Note: there is a {{Prototype.lua}} file in the package, which is completely inde
 
 === Code ===
 
-This project's code can be dowloaded from its [http://code.google.com/p/objectlua Google code page].
+This project's code can be dowloaded from its [http://github.com/sroccaserra/object-lua GitHub page].
 
 You can also install ObjectLua from LuaRocks:
 {{{
@@ -69,6 +69,6 @@ Thanks to Robert Rangel for finding a blocker bug fixed in version 0.0.3.
 === See Also ===
 
         * The project's [http://sroccaserra.uservoice.com/pages/object_lua UserVoice page] for bugs & feature requests.
-        * The project's [http://code.google.com/p/objectlua/ Google code page]
+        * The project's [http://github.com/sroccaserra/object-lua GitHub page]
         * ObjectOrientedProgramming
 
