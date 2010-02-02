@@ -3,7 +3,7 @@ ObjectLua
 
 A class-oriented OOP module for Lua
 
-This is an implementation of a class-oriented Lua module, coded entirely in Lua. The object model allows you to override 'new()' (see tests), so you can write classes that behave the way you want. While still in design stage, the interface is getting quite stable and I will add a multiple inheritance mechanism if a user asks me to, or if I need it miself.
+This is an implementation of a class-oriented Lua module, coded entirely in Lua. The object model allows you to override `new()` (see tests), so you can write classes that behave the way you want. While still in design stage, the interface is getting quite stable and I will add a multiple inheritance mechanism if a user asks me to, or if I need it miself.
 
 This is a beta release, please report bugs & feature requests to the project's [UserVoice Page][uv].
 
@@ -20,7 +20,7 @@ Features
 * The use of super only grants access to methods, NOT to data members (prevents many evils)
 * Consistent use of `:`, always use `:` to call any method of any class or instance
 * Object model allows to redefine `new()` in any class (see tests)
-* Use "has" to define members (inspired by Moose)
+* Use `has` to define members (inspired by Moose)
 * Hopefully only one way to do things, very predictible results
 
 Note: there is a `Prototype.lua` file in the package, which is completely independant, but if you need prototype-based oop have a look at it (it provides a `super(self)` function).
@@ -43,16 +43,14 @@ You can also install ObjectLua from LuaRocks:
     $ luarocks install objectlua
 
 
-
 Tests and Usage
 ---------------
 
-See TestObject.
+See [TestObject](http://github.com/sroccaserra/object-lua/blob/master/test/TestObject.lua).
 
 The tests documenting ObjectLua usage can be found in the `test` directory. You can run them with:
 
     $ rake test
-
 
 They use [LuaUnit][lu].
 
