@@ -37,7 +37,10 @@ end
 task :rockspec => :package do
     # Gather data from files...
     Md5 = Digest::MD5.hexdigest File.read "pkg/#{Package_task.tar_gz_file}"
-    readme = File.new 'Readme.txt'
+    readme = File.new 'Readme.md'
+    readme.gets
+    readme.gets
+    readme.gets
     readme.gets
     Summary  = $_.chomp
     readme.gets ''
