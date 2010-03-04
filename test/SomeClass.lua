@@ -1,5 +1,3 @@
--- -*- compile-command: "rake" -*-
-
 local Object = require 'objectlua.Object'
 
 Object:subclass(...)

@@ -1,5 +1,3 @@
--- -*- compile-command: "rake" -*-
-
 --
 -- Tested with Lua 5.1.3
 --

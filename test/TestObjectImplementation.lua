@@ -1,5 +1,3 @@
--- -*- compile-command: "rake" -*-
-
 require 'objectlua.init'
 
 local Object = objectlua.Object

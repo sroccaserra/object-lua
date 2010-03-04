@@ -1,5 +1,3 @@
--- -*- compile-command: "rake" -*-
-
 require 'objectlua.bootstrap'
 require 'objectlua.Class'
 

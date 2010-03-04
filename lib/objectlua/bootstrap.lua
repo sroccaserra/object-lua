@@ -1,5 +1,3 @@
--- -*- compile-command: "rake" -*-
-
 local _G = _G
 
 module(...)
