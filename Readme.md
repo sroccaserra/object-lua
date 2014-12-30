@@ -1,4 +1,6 @@
-[Deprecated] - I now prefer to use proper [prototype-based object oriented programming][pbp], in both Lua and JavaScript.
+[Deprecated]
+
+I now prefer to use proper [prototype-based object oriented programming][pbp], in both Lua and JavaScript.
 
 For inspiration, you can look at these JS refs:
 
