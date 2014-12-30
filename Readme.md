@@ -9,7 +9,7 @@ For inspiration, you can look at these JS refs:
 
 And of course, the historical papers about prototypical objects:
 
-- [Using Prototypical Objects to Implement Shared Behavior in Object Oriented Systems][upo], Henry Lieberman, 1986,
+- [Using Prototypical Objects to Implement Shared Behavior in Object Oriented Systems][upo], Henry Lieberman, OOPSLA '86,
 - [Class Warfare: Classes vs. Prototypes][cvo], Brian Foote, OOPSLA '89,
 - [Organizing Programs Without Classes (pdf)][opwc], UNGAR, CHAMBERS, CHANG, HÖLZLE, 1991.
 
