@@ -1,5 +1,27 @@
+[Deprecated] - I now prefer to use proper [prototype-based object oriented programming][pbp], in both Lua and JavaScript.
+
+For inspiration, you can look at these JS refs:
+
+- the _Objects Linked to Other Objects_ (OLOO) part of the [New Rules for JavaScript (video)][nrfjs] presentation,
+- [JS Inheritance is awesome, and you're doing it wrong][ydiw], blog post.
+
+And of course, the historical papers about prototypical objects:
+
+- [Using Prototypical Objects to Implement Shared Behavior in Object Oriented Systems][upo], Henry Lieberman, 1986,
+- [Class Warfare: Classes vs. Prototypes][cvo], Brian Foote, OOPSLA '89,
+- [Organizing Programs Without Classes (pdf)][opwc], UNGAR, CHAMBERS, CHANG, HÖLZLE, 1991.
+
+[pbp]: https://en.wikipedia.org/wiki/Prototype-based_programming
+[nrfjs]: https://www.youtube.com/watch?v=S4cvuuq3OKY
+[ydiw]: https://coderwall.com/p/sd9lda
+
+[upo]: http://web.media.mit.edu/~lieber/Lieberary/OOP/Delegation/Delegation.html
+[cvo]: http://www.laputan.org/reflection/warfare.html
+[opwc]: https://cs.au.dk/~hosc/local/LaSC-4-3-pp223-242.pdf
+
 ObjectLua
 =========
+
 
 A class-oriented OOP module for Lua
 
