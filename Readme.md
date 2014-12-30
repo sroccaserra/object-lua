@@ -1,6 +1,6 @@
 [Deprecated]
 
-I now prefer to use proper [prototype-based object oriented programming][pbp], in both Lua and JavaScript.
+I now prefer to use native [prototype-based object oriented programming][pbp], in both Lua and JavaScript.
 
 For inspiration, you can look at these JS refs:
 
@@ -10,7 +10,8 @@ For inspiration, you can look at these JS refs:
 And of course, the historical papers about prototypical objects:
 
 - [Using Prototypical Objects to Implement Shared Behavior in Object Oriented Systems][upo], Henry Lieberman, OOPSLA '86,
-- [Class Warfare: Classes vs. Prototypes][cvo], Brian Foote, OOPSLA '89,
+- [Classes versus Prototypes in Object-Oriented Languages (pdf)][cvp], Alan Borning, 1986
+- [Class Warfare: Classes vs. Prototypes][cw], Brian Foote, OOPSLA '89,
 - [Organizing Programs Without Classes (pdf)][opwc], UNGAR, CHAMBERS, CHANG, HÖLZLE, 1991.
 
 [pbp]: https://en.wikipedia.org/wiki/Prototype-based_programming
@@ -18,7 +19,8 @@ And of course, the historical papers about prototypical objects:
 [ydiw]: https://coderwall.com/p/sd9lda
 
 [upo]: http://web.media.mit.edu/~lieber/Lieberary/OOP/Delegation/Delegation.html
-[cvo]: http://www.laputan.org/reflection/warfare.html
+[cvp]: ftp://ftp.cs.washington.edu/pub/constraints/papers/fjcc-86.pdf
+[cw]: http://www.laputan.org/reflection/warfare.html
 [opwc]: https://cs.au.dk/~hosc/local/LaSC-4-3-pp223-242.pdf
 
 ObjectLua
