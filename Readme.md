@@ -10,7 +10,7 @@ For inspiration, you can look at these JS refs:
 And of course, the historical papers about prototypical objects:
 
 - [Using Prototypical Objects to Implement Shared Behavior in Object Oriented Systems][upo], Henry Lieberman, OOPSLA '86,
-- [Classes versus Prototypes in Object-Oriented Languages (pdf)][cvp], Alan Borning, 1986
+- [Classes versus Prototypes in Object-Oriented Languages (pdf)][cvp], Alan Borning, 1986,
 - [Class Warfare: Classes vs. Prototypes][cw], Brian Foote, OOPSLA '89,
 - [Organizing Programs Without Classes (pdf)][opwc], UNGAR, CHAMBERS, CHANG, HÖLZLE, 1991.
 
@@ -19,7 +19,8 @@ And of course, the historical papers about prototypical objects:
 [ydiw]: https://coderwall.com/p/sd9lda
 
 [upo]: http://web.media.mit.edu/~lieber/Lieberary/OOP/Delegation/Delegation.html
-[cvp]: ftp://ftp.cs.washington.edu/pub/constraints/papers/fjcc-86.pdf
+ <!-- ftp://ftp.cs.washington.edu/pub/constraints/papers/fjcc-86.pdf -->
+[cvp]: http://bit.ly/1EESXU7
 [cw]: http://www.laputan.org/reflection/warfare.html
 [opwc]: https://cs.au.dk/~hosc/local/LaSC-4-3-pp223-242.pdf
 
